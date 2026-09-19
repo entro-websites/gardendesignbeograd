@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Garden Design Beograd | Projektovanje i održavanje zelenih površina</title>
+<meta name="description" content="Garden Design Beograd projektuje, izvodi i održava zelene površine za kuće, zgrade i poslovne objekte u Beogradu. Zakaži konsultaciju.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caudex:wght@400;700&family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --accent:#99e265;
+    --accent-dark:#4f8f2a;
+    --accent-darker:#3a6b1f;
+    --accent-soft:#eef8e4;
+    --accent-glow: rgba(153,226,101,0.35);
+    --text:#171a13;
+    --text-muted:#525a49;
+    --text-faint:#8f9686;
+    --bg:#ffffff;
+    --bg-off:#fafbf7;
+    --radius-btn:10px;
+    --radius-card:22px;
+    --container:1280px;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0;}
+
+  html{scroll-behavior:smooth; scroll-padding-top:90px;}
+
+  body{
+    font-family:'Open Sans', sans-serif;
+    color:var(--text);
+    background:var(--bg);
+    font-weight:400;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  img{max-width:100%; display:block;}
+
+  h1,h2,h3,h4{
+    font-family:'Caudex', serif;
+    font-weight:700;
+    color:var(--text);
+    line-height:1.15;
+  }
+
+  p{color:var(--text-muted);}
+
+  a{color:inherit; text-decoration:none;}
+
+  .wrap{
+    max-width:var(--container);
+    margin:0 auto;
+    padding-left:24px;
+    padding-right:24px;
+  }
+
+  @media (max-width:768px){
+    .wrap{padding-left:20px; padding-right:20px;}
+  }
+
+  section{padding-top:96px; padding-bottom:96px;}
+
+  @media (max-width:768px){
+    section{padding-top:64px; padding-bottom:64px;}
+  }
+
+  .eyebrow{
+    display:inline-block;
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--accent-dark);
+    margin-bottom:16px;
+  }
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    background:var(--accent-dark);
+    color:#fff;
+    font-family:'Open Sans', sans-serif;
+    font-weight:700;
+    font-size:16px;
+    padding:16px 32px;
+    border-radius:var(--radius-btn);
+    border:2px solid var(--accent-dark);
+    cursor:pointer;
+    transition:background .25s ease, transform .2s ease, box-shadow .25s ease;
+    white-space:nowrap;
+  }
+  .btn:hover{
+    background:var(--accent-darker);
+    border-color:var(--accent-darker);
+    box-shadow:0 10px 30px -12px rgba(79,143,42,0.55);
+    transform:translateY(-2px);
+  }
+
+  .btn-outline{
+    background:transparent;
+    color:var(--accent-darker);
+    border:2px solid var(--accent-dark);
+  }
+  .btn-outline:hover{
+    background:var(--accent-soft);
+    box-shadow:none;
+    transform:translateY(-2px);
+  }
+
+  /* ---------- HEADER ---------- */
+  header{
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:#fff;
+    border-bottom:1px solid rgba(23,26,19,0.06);
+  }
+  header.scrolled{
+    background:rgba(255,255,255,0.85);
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+  }
+
+  .nav-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding-top:16px;
+    padding-bottom:16px;
+  }
+
+  .logo img{
+    height:44px;
+    width:auto;
+  }
+
+  nav.desktop-nav{
+    display:flex;
+    align-items:center;
+    gap:36px;
+  }
+
+  nav.desktop-nav a{
+    font-size:15px;
+    font-weight:600;
+    color:var(--text);
+    transition:color .2s ease;
+  }
+  nav.desktop-nav a:hover{color:var(--accent-dark);}
+
+  .nav-cta{display:flex; align-items:center; gap:24px;}
+
+  .hamburger{
+    display:none;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:5px;
+    width:44px;
+    height:44px;
+    background:none;
+    border:none;
+    cursor:pointer;
+  }
+  .hamburger span{
+    display:block;
+    width:24px;
+    height:2px;
+    background:var(--text);
+    transition:transform .25s ease, opacity .25s ease;
+  }
+  .hamburger.active span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .hamburger.active span:nth-child(2){opacity:0;}
+  .hamburger.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+  .mobile-menu{
+    display:none;
+    max-height:0;
+    overflow:hidden;
+    background:#fff;
+    border-top:1px solid rgba(23,26,19,0.06);
+    transition:max-height .35s ease;
+  }
+  .mobile-menu.open{max-height:420px;}
+  .mobile-menu-inner{
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+    padding-top:16px;
+    padding-bottom:24px;
+  }
+  .mobile-menu a.nav-link{
+    padding-top:12px;
+    padding-bottom:12px;
+    font-weight:600;
+    font-size:16px;
+    border-bottom:1px solid rgba(23,26,19,0.06);
+  }
+  .mobile-menu .btn{margin-top:16px; width:100%;}
+
+  @media (max-width:991px){
+    nav.desktop-nav{display:none;}
+    .nav-cta{display:none;}
+    .hamburger{display:flex;}
+    .mobile-menu{display:block;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:640px;
+    display:flex;
+    align-items:center;
+    padding-top:120px;
+    padding-bottom:120px;
+    background:#0e1409 url('assets/TVr5P2nY02.jpg') center/cover no-repeat;
+  }
+  .hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg, rgba(10,15,6,0.72) 0%, rgba(10,15,6,0.55) 45%, rgba(10,15,6,0.8) 100%);
+  }
+  .hero .wrap{position:relative; z-index:2;}
+  .hero-content{max-width:680px;}
+  .hero h1{
+    font-size:clamp(36px, 5.6vw, 62px);
+    color:#fff;
+    margin-bottom:24px;
+  }
+  .hero p.subtitle{
+    font-size:19px;
+    color:rgba(255,255,255,0.88);
+    max-width:520px;
+    margin-bottom:36px;
+  }
+  .hero .btn{
+    background:var(--accent);
+    color:#122008;
+    border-color:var(--accent);
+  }
+  .hero .btn:hover{
+    background:#84d64e;
+    border-color:#84d64e;
+    box-shadow:0 14px 34px -12px rgba(153,226,101,0.55);
+  }
+
+  /* ---------- PAIN INTRO ---------- */
+  .pain{
+    background:var(--bg-off);
+    border-bottom:1px solid rgba(23,26,19,0.06);
+  }
+  .pain-inner{
+    max-width:760px;
+    margin:0 auto;
+    text-align:center;
+  }
+  .pain h2{font-size:clamp(24px,3vw,32px); margin-bottom:20px;}
+  .pain p{font-size:18px; max-width:65ch; margin:0 auto;}
+
+  /* ---------- USLUGE ---------- */
+  .section-head{
+    max-width:640px;
+    margin-bottom:56px;
+  }
+  .section-head h2{font-size:clamp(28px,3.6vw,40px); margin-bottom:16px;}
+  .section-head p{font-size:17px; max-width:60ch;}
+
+  .services-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:28px;
+  }
+
+  .service-card{
+    background:#fff;
+    border:1px solid rgba(23,26,19,0.08);
+    border-radius:var(--radius-card);
+    overflow:hidden;
+    transition:box-shadow .3s ease, transform .3s ease;
+  }
+  .service-card:hover{
+    box-shadow:0 24px 48px -24px rgba(23,26,19,0.25);
+    transform:translateY(-4px);
+  }
+  .service-img{
+    height:200px;
+    width:100%;
+    overflow:hidden;
+  }
+  .service-img img{width:100%; height:100%; object-fit:cover;}
+  .service-body{padding-top:28px; padding-bottom:32px; padding-left:28px; padding-right:28px;}
+  .service-icon{
+    width:44px;
+    height:44px;
+    color:var(--accent-dark);
+    margin-bottom:18px;
+  }
+  .service-icon svg{width:100%; height:100%;}
+  .service-body h3{font-size:21px; margin-bottom:12px;}
+  .service-body p{font-size:15.5px;}
+
+  .services-cta{
+    display:flex;
+    justify-content:center;
+    margin-top:52px;
+  }
+
+  @media (max-width:991px){
+    .services-grid{grid-template-columns:1fr 1fr; }
+  }
+  @media (max-width:640px){
+    .services-grid{grid-template-columns:1fr;}
+  }
+
+  /* ---------- O BRENDU ---------- */
+  .about{background:var(--bg-off);}
+  .about-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:64px;
+    align-items:center;
+  }
+  .about-img{
+    border-radius:var(--radius-card);
+    overflow:hidden;
+    position:relative;
+  }
+  .about-img img{width:100%; height:100%; object-fit:cover; display:block; min-height:380px;}
+  .about-text h2{font-size:clamp(28px,3.6vw,38px); margin-bottom:20px;}
+  .about-text p{font-size:17px; margin-bottom:24px; max-width:56ch;}
+
+  .why-list{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+    margin-top:28px;
+  }
+  .why-item{
+    display:flex;
+    gap:16px;
+    align-items:flex-start;
+  }
+  .why-icon{
+    flex-shrink:0;
+    width:28px;
+    height:28px;
+    border-radius:50%;
+    background:var(--accent-soft);
+    color:var(--accent-dark);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .why-icon svg{width:16px; height:16px;}
+  .why-item h4{font-size:16.5px; margin-bottom:4px;}
+  .why-item p{font-size:15px; margin-bottom:0;}
+
+  @media (max-width:900px){
+    .about-grid{grid-template-columns:1fr; gap:40px;}
+    .about-img img{min-height:280px;}
+  }
+
+  /* ---------- GALERIJA ---------- */
+  .gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:24px;
+  }
+  .gallery-item{
+    border-radius:var(--radius-card);
+    overflow:hidden;
+    position:relative;
+    background:var(--bg-off);
+    border:1px solid rgba(23,26,19,0.08);
+  }
+  .gallery-item img{
+    width:100%;
+    height:230px;
+    object-fit:cover;
+    transition:transform .4s ease;
+  }
+  .gallery-item:hover img{transform:scale(1.06);}
+  .gallery-caption{
+    padding-top:16px; padding-bottom:18px; padding-left:18px; padding-right:18px;
+    font-size:14px;
+    font-weight:600;
+    color:var(--text);
+  }
+
+  @media (max-width:991px){
+    .gallery-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:560px){
+    .gallery-grid{grid-template-columns:1fr;}
+  }
+
+  /* ---------- KONTAKT / CTA ---------- */
+  .contact{
+    position:relative;
+    background:var(--accent-darker);
+    overflow:hidden;
+  }
+  .contact::before{
+    content:"";
+    position:absolute;
+    top:-140px;
+    right:-140px;
+    width:420px;
+    height:420px;
+    border-radius:50%;
+    background:radial-gradient(circle, var(--accent-glow) 0%, rgba(153,226,101,0) 70%);
+    pointer-events:none;
+  }
+  .contact-inner{
+    position:relative;
+    z-index:2;
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:56px;
+    align-items:start;
+  }
+  .contact-left h2{color:#fff; font-size:clamp(28px,3.6vw,40px); margin-bottom:18px;}
+  .contact-left p{color:rgba(255,255,255,0.82); font-size:17px; max-width:52ch; margin-bottom:32px;}
+  .contact .btn{
+    background:var(--accent);
+    color:#122008;
+    border-color:var(--accent);
+  }
+  .contact .btn:hover{
+    background:#fff;
+    border-color:#fff;
+  }
+
+  .contact-card{
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.18);
+    border-radius:var(--radius-card);
+    padding-top:32px; padding-bottom:32px; padding-left:32px; padding-right:32px;
+  }
+  .contact-row{
+    display:flex;
+    gap:16px;
+    align-items:flex-start;
+    margin-bottom:24px;
+  }
+  .contact-row:last-child{margin-bottom:0;}
+  .contact-row .ic{
+    width:22px; height:22px; color:var(--accent); flex-shrink:0; margin-top:2px;
+  }
+  .contact-row .ic svg{width:100%; height:100%;}
+  .contact-row h4{color:#fff; font-size:14px; letter-spacing:.04em; text-transform:uppercase; margin-bottom:6px; font-family:'Open Sans',sans-serif; font-weight:700;}
+  .contact-row p{color:rgba(255,255,255,0.85); font-size:15.5px; margin-bottom:0;}
+  .contact-row a{color:rgba(255,255,255,0.85);}
+  .contact-row a:hover{color:var(--accent);}
+
+  @media (max-width:900px){
+    .contact-inner{grid-template-columns:1fr; gap:36px;}
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:#fff;
+    border-top:1px solid rgba(23,26,19,0.08);
+    padding-top:56px;
+    padding-bottom:32px;
+  }
+  .footer-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    flex-wrap:wrap;
+    gap:32px;
+    padding-bottom:32px;
+  }
+  .footer-logo img{height:38px;}
+  .footer-tagline{font-size:14.5px; color:var(--text-faint); max-width:280px; margin-top:14px;}
+  .footer-links{display:flex; gap:56px; flex-wrap:wrap;}
+  .footer-col h4{font-size:14px; text-transform:uppercase; letter-spacing:.06em; margin-bottom:14px; font-family:'Open Sans',sans-serif; font-weight:700; color:var(--text);}
+  .footer-col a{display:block; font-size:14.5px; color:var(--text-muted); margin-bottom:10px;}
+  .footer-col a:hover{color:var(--accent-dark);}
+  .footer-bottom{
+    border-top:1px solid rgba(23,26,19,0.08);
+    padding-top:24px;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:12px;
+    font-size:13.5px;
+    color:var(--text-faint);
+  }
+
+  /* ---------- REVEAL ---------- */
+  .reveal{
+    opacity:1;
+    transform:translateY(14px);
+    transition:transform .6s ease, opacity .6s ease;
+  }
+  .reveal.in-view{transform:translateY(0);}
+
+</style>
+</head>
+<body>
+
+<header id="site-header">
+  <div class="wrap nav-inner">
+    <a href="#home" class="logo">
+      <img src="assets/logo.png" alt="Garden Design Beograd logo">
+    </a>
+    <nav class="desktop-nav">
+      <a href="#home">Početna</a>
+      <a href="#usluge">Usluge</a>
+      <a href="#o-nama">O nama</a>
+      <a href="#radovi">Radovi</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="#kontakt" class="btn">Zakaži konsultaciju</a>
+    </div>
+    <button class="hamburger" id="hamburgerBtn" aria-label="Otvori meni">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="wrap mobile-menu-inner">
+      <a href="#home" class="nav-link">Početna</a>
+      <a href="#usluge" class="nav-link">Usluge</a>
+      <a href="#o-nama" class="nav-link">O nama</a>
+      <a href="#radovi" class="nav-link">Radovi</a>
+      <a href="#kontakt" class="nav-link">Kontakt</a>
+      <a href="#kontakt" class="btn">Zakaži konsultaciju</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="home">
+  <div class="wrap">
+    <div class="hero-content">
+      <h1>Vrt kakav si zamišljao, ne onaj koji je ostao na pola</h1>
+      <p class="subtitle">Projektujemo, uređujemo i održavamo zelene površine u Beogradu - od prve skice na papiru do redovnog košenja trave.</p>
+      <a href="#kontakt" class="btn">Zakaži besplatnu konsultaciju</a>
+    </div>
+  </div>
+</section>
+
+<section class="pain reveal">
+  <div class="wrap pain-inner">
+    <h2>Zvuči poznato?</h2>
+    <p>Trava je požutela, žive ograde rastu na svoju ruku, a ideja o urednom dvorištu čeka već drugu sezonu. Nemaš vremena da se sam boriš sa baštom, a ne znaš kome da je prepustiš. Tu ulazimo mi.</p>
+  </div>
+</section>
+
+<section id="usluge">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Usluge</span>
+      <h2>Šta radimo za tvoj prostor</h2>
+      <p>Tri koraka od zapuštenog dvorišta do bašte u koju rado izlaziš svaki dan.</p>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-img">
+          <img src="assets/VXVJCOOD4o.jpg" alt="Skica plana pejzažne arhitekture sa raspoređenim biljkama i stazama">
+        </div>
+        <div class="service-body">
+          <div class="service-icon">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="8" y="6" width="32" height="36" rx="2"/>
+              <path d="M14 16h20M14 24h20M14 32h12"/>
+            </svg>
+          </div>
+          <h3>Projektovanje pejzažne arhitekture</h3>
+          <p>Sednemo, ispričaš kako zamišljaš prostor, mi to prenesemo na papir. Raspored biljaka, staze, osvetljenje i navodnjavanje - sve isplanirano pre nego što zakopamo prvu lopatu.</p>
+        </div>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-img">
+          <img src="assets/3n9qyeiqyy.jpg" alt="Sistem za navodnjavanje koji zaliva travnjak">
+        </div>
+        <div class="service-body">
+          <div class="service-icon">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M24 6v22"/>
+              <path d="M15 28c0 8 4 12 9 14 5-2 9-6 9-14"/>
+              <path d="M17 10h14"/>
+            </svg>
+          </div>
+          <h3>Izvođenje radova na uređenju</h3>
+          <p>Kad je plan gotov, dolazimo sa ekipom i alatom. Sadimo, popločavamo staze, postavljamo travnjak i sistem za navodnjavanje. Ti pratiš napredak, mi rešavamo sve što iskrsne na terenu.</p>
+        </div>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-img">
+          <img src="assets/qa9ktGv2QD.jpg" alt="Ruke koje presađuju biljku prilikom redovnog održavanja">
+        </div>
+        <div class="service-body">
+          <div class="service-icon">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="16" cy="34" r="5"/>
+              <circle cx="34" cy="34" r="5"/>
+              <path d="M19 30 40 10M30 30 8 10"/>
+            </svg>
+          </div>
+          <h3>Redovno održavanje</h3>
+          <p>Bašta traži pažnju i posle radova. Kosimo travu, orezujemo živu ogradu, đubrimo zemlju i navodnjavamo po rasporedu koji ti odgovara - nedeljno, mesečno ili sezonski.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="services-cta reveal">
+      <a href="#kontakt" class="btn">Zatraži ponudu za svoj prostor</a>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="o-nama">
+  <div class="wrap about-grid">
+    <div class="about-img reveal">
+      <img src="assets/ZldssBgzBp.jpg" alt="Uređeno dvorište sa lavandom, kamenim stepenicama i mestom za sedenje">
+    </div>
+    <div class="about-text reveal">
+      <span class="eyebrow">O nama</span>
+      <h2>Ko uređuje tvoj vrt</h2>
+      <p>Garden Design Beograd projektuje, izvodi i održava zelene površine širom Beograda. Radimo sa porodičnim kućama, stambenim zgradama i poslovnim objektima - od terase od nekoliko kvadrata do dvorišta od nekoliko ari.</p>
+      <p>Svaki posao vodimo od prve skice do poslednjeg reza makazama, bez prepuštanja radova podizvođačima koje nismo sami proverili.</p>
+
+      <div class="why-list">
+        <div class="why-item">
+          <span class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+          <div>
+            <h4>Plan pre lopate</h4>
+            <p>Svaki projekat počinje detaljnim planom, ne nagađanjem na terenu.</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <span class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+          <div>
+            <h4>Jedna ekipa, od početka do kraja</h4>
+            <p>Isti ljudi rade projektovanje, izvođenje i održavanje, bez prebacivanja odgovornosti.</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <span class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+          <div>
+            <h4>Dostupni posle završetka radova</h4>
+            <p>Javljaš se kad god bašta zatraži pažnju, ne samo dok traje ugovor.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="radovi">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Radovi</span>
+      <h2>Deo bašta i terasa na kojima smo radili</h2>
+      <p>Nekoliko prostora koje smo uredili i koje redovno održavamo u Beogradu i okolini.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item reveal">
+        <img src="assets/nkUi6KoEW1.jpg" alt="Baštenska staza od kamenih ploča kroz uređen travnjak">
+        <div class="gallery-caption">Staza kroz privatni vrt sa aranžmanom bonsaja</div>
+      </div>
+      <div class="gallery-item reveal">
+        <img src="assets/v7ZsBIjn8V.jpg" alt="Terasa ozelenjena maslinama i citrusima u saksijama">
+        <div class="gallery-caption">Ozelenjavanje krovne terase maslinama i citrusima</div>
+      </div>
+      <div class="gallery-item reveal">
+        <img src="assets/6usjBncb4w-1.jpg" alt="Postavljanje travnog tepiha na dvorištu">
+        <div class="gallery-caption">Postavljanje travnog tepiha za novo dvorište</div>
+      </div>
+      <div class="gallery-item reveal">
+        <img src="assets/2nC06HCNE6.jpg" alt="Enterijer ozelenjen kaktusima i sukulentima u saksijama">
+        <div class="gallery-caption">Ozelenjavanje enterijera i terase sukulentima</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="kontakt">
+  <div class="wrap contact-inner">
+    <div class="contact-left reveal">
+      <span class="eyebrow" style="color:var(--accent);">Kontakt</span>
+      <h2>Vreme je da tvoj vrt dobije plan</h2>
+      <p>Javi se, ispričaj nam kako izgleda tvoj prostor i šta ti smeta. Predlažemo rešenje i cenu, bez obaveze.</p>
+      <a href="tel:+381601234567" class="btn">Zakaži besplatnu konsultaciju</a>
+    </div>
+    <div class="contact-card reveal">
+      <div class="contact-row">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.32 1.79.6 2.65a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.43-1.17a2 2 0 0 1 2.11-.45c.86.28 1.75.48 2.65.6A2 2 0 0 1 22 16.92z"/></svg></span>
+        <div>
+          <h4>Telefon</h4>
+          <p><a href="tel:+381601234567">+381 60 123 4567</a></p>
+        </div>
+      </div>
+      <div class="contact-row">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M4 6l8 7 8-7"/></svg></span>
+        <div>
+          <h4>Email</h4>
+          <p><a href="mailto:info@gardendesignbeograd.rs">info@gardendesignbeograd.rs</a></p>
+        </div>
+      </div>
+      <div class="contact-row">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 6-9 13-9 13s-9-7-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+        <div>
+          <h4>Lokacija</h4>
+          <p>Beograd, Srbija</p>
+        </div>
+      </div>
+      <div class="contact-row">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span>
+        <div>
+          <h4>Radno vreme</h4>
+          <p>Ponedeljak - subota, 08 - 18h</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <a href="#home" class="footer-logo"><img src="assets/logo.png" alt="Garden Design Beograd logo"></a>
+        <p class="footer-tagline">Projektujemo, uređujemo i održavamo zelene površine u Beogradu.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Stranica</h4>
+          <a href="#home">Početna</a>
+          <a href="#usluge">Usluge</a>
+          <a href="#o-nama">O nama</a>
+          <a href="#radovi">Radovi</a>
+        </div>
+        <div class="footer-col">
+          <h4>Kontakt</h4>
+          <a href="tel:+381601234567">+381 60 123 4567</a>
+          <a href="mailto:info@gardendesignbeograd.rs">info@gardendesignbeograd.rs</a>
+          <a href="#kontakt">Beograd, Srbija</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2024 Garden Design Beograd. Sva prava zadržana.</span>
+      <span>Izrada i održavanje zelenih površina u Beogradu</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile menu toggle
+  var hamburger = document.getElementById('hamburgerBtn');
+  var mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', function(){
+    hamburger.classList.toggle('active');
+    mobileMenu.classList.toggle('open');
+  });
+  document.querySelectorAll('.mobile-menu a').forEach(function(link){
+    link.addEventListener('click', function(){
+      hamburger.classList.remove('active');
+      mobileMenu.classList.remove('open');
+    });
+  });
+
+  // Sticky header blur on scroll
+  var header = document.getElementById('site-header');
+  window.addEventListener('scroll', function(){
+    if(window.scrollY > 12){
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  });
+
+  // Scroll reveal
+  if('IntersectionObserver' in window){
+    var revealEls = document.querySelectorAll('.reveal');
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('in-view');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {threshold: 0.15});
+    revealEls.forEach(function(el){ observer.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in-view'); });
+  }
+</script>
+
+</body>
+</html>
