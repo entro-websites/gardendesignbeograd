@@ -345,15 +345,14 @@
 
   /* ---------- KALENDAR VRTA (tamno) ---------- */
   .cal-months{
-    display:grid;grid-template-columns:repeat(6, minmax(0, 1fr));gap:8px;
+    display:grid;grid-template-columns:repeat(12, minmax(0, 1fr));gap:8px;
     margin-bottom:56px;
   }
-  @media (max-width:980px){.cal-months{grid-template-columns:repeat(4, minmax(0, 1fr));}}
-  @media (max-width:640px){.cal-months{grid-template-columns:repeat(3, minmax(0, 1fr));}}
-  @media (max-width:480px){.cal-months{grid-template-columns:repeat(2, minmax(0, 1fr));}}
+  @media (max-width:940px){.cal-months{grid-template-columns:repeat(6, minmax(0, 1fr));}}
+  @media (max-width:560px){.cal-months{grid-template-columns:repeat(4, minmax(0, 1fr));}}
   .cal-month{
-    padding-top:12px;padding-bottom:12px;padding-left:16px;padding-right:16px;
-    text-align:center;
+    padding-top:12px;padding-bottom:12px;padding-left:8px;padding-right:8px;
+    text-align:center;white-space:nowrap;
     border-radius:999px;border:1px solid var(--dark-line);
     color:var(--on-dark-muted);font-size:16px;font-weight:600;
     transition:background 0.24s ease, color 0.24s ease, border-color 0.24s ease;
@@ -363,7 +362,7 @@
   .cal-month:focus-visible{outline:2px solid var(--lime);outline-offset:4px;}
   .cal-month .now{
     display:inline-block;width:8px;height:8px;border-radius:999px;background:var(--lime);
-    margin-left:8px;vertical-align:middle;
+    margin-left:4px;vertical-align:middle;
   }
   .cal-month[aria-selected="true"] .now{background:var(--ink);}
 
@@ -694,31 +693,31 @@
         <div class="sec-head">
           <div>
             <span class="label">Kalendar vrta</span>
-            <h2>Bašta ima raspored, mi ga pratimo</h2>
+            <h2>Šta se radi u bašti, mesec po mesec</h2>
           </div>
-          <p class="sub">Svaki mesec traži nešto drugo. Izaberi mesec i vidi šta se tada radi u dvorištu, i šta tu radimo mi.</p>
+          <p class="sub">Svaki mesec ima svoje poslove. Klikni na mesec i vidi šta je tada na redu u tvom dvorištu — sve to radimo umesto tebe.</p>
         </div>
 
         <div class="cal-months" role="tablist" aria-label="Meseci u godini">
-          <button class="cal-month" role="tab" id="mtab-0" aria-controls="mpan-0" aria-selected="false" tabindex="-1">Januar</button>
-          <button class="cal-month" role="tab" id="mtab-1" aria-controls="mpan-1" aria-selected="false" tabindex="-1">Februar</button>
-          <button class="cal-month" role="tab" id="mtab-2" aria-controls="mpan-2" aria-selected="false" tabindex="-1">Mart</button>
-          <button class="cal-month" role="tab" id="mtab-3" aria-controls="mpan-3" aria-selected="false" tabindex="-1">April</button>
-          <button class="cal-month" role="tab" id="mtab-4" aria-controls="mpan-4" aria-selected="false" tabindex="-1">Maj</button>
-          <button class="cal-month" role="tab" id="mtab-5" aria-controls="mpan-5" aria-selected="false" tabindex="-1">Jun</button>
-          <button class="cal-month" role="tab" id="mtab-6" aria-controls="mpan-6" aria-selected="false" tabindex="-1">Jul</button>
-          <button class="cal-month" role="tab" id="mtab-7" aria-controls="mpan-7" aria-selected="false" tabindex="-1">Avgust</button>
-          <button class="cal-month" role="tab" id="mtab-8" aria-controls="mpan-8" aria-selected="true">Septembar</button>
-          <button class="cal-month" role="tab" id="mtab-9" aria-controls="mpan-9" aria-selected="false" tabindex="-1">Oktobar</button>
-          <button class="cal-month" role="tab" id="mtab-10" aria-controls="mpan-10" aria-selected="false" tabindex="-1">Novembar</button>
-          <button class="cal-month" role="tab" id="mtab-11" aria-controls="mpan-11" aria-selected="false" tabindex="-1">Decembar</button>
+          <button class="cal-month" role="tab" id="mtab-0" aria-controls="mpan-0" data-full="Januar" aria-label="Januar" aria-selected="false" tabindex="-1">Jan</button>
+          <button class="cal-month" role="tab" id="mtab-1" aria-controls="mpan-1" data-full="Februar" aria-label="Februar" aria-selected="false" tabindex="-1">Feb</button>
+          <button class="cal-month" role="tab" id="mtab-2" aria-controls="mpan-2" data-full="Mart" aria-label="Mart" aria-selected="false" tabindex="-1">Mar</button>
+          <button class="cal-month" role="tab" id="mtab-3" aria-controls="mpan-3" data-full="April" aria-label="April" aria-selected="false" tabindex="-1">Apr</button>
+          <button class="cal-month" role="tab" id="mtab-4" aria-controls="mpan-4" data-full="Maj" aria-label="Maj" aria-selected="false" tabindex="-1">Maj</button>
+          <button class="cal-month" role="tab" id="mtab-5" aria-controls="mpan-5" data-full="Jun" aria-label="Jun" aria-selected="false" tabindex="-1">Jun</button>
+          <button class="cal-month" role="tab" id="mtab-6" aria-controls="mpan-6" data-full="Jul" aria-label="Jul" aria-selected="false" tabindex="-1">Jul</button>
+          <button class="cal-month" role="tab" id="mtab-7" aria-controls="mpan-7" data-full="Avgust" aria-label="Avgust" aria-selected="false" tabindex="-1">Avg</button>
+          <button class="cal-month" role="tab" id="mtab-8" aria-controls="mpan-8" data-full="Septembar" aria-label="Septembar" aria-selected="true">Sep</button>
+          <button class="cal-month" role="tab" id="mtab-9" aria-controls="mpan-9" data-full="Oktobar" aria-label="Oktobar" aria-selected="false" tabindex="-1">Okt</button>
+          <button class="cal-month" role="tab" id="mtab-10" aria-controls="mpan-10" data-full="Novembar" aria-label="Novembar" aria-selected="false" tabindex="-1">Nov</button>
+          <button class="cal-month" role="tab" id="mtab-11" aria-controls="mpan-11" data-full="Decembar" aria-label="Decembar" aria-selected="false" tabindex="-1">Dec</button>
         </div>
 
         <div class="cal-panel" id="mpan-0" role="tabpanel" aria-labelledby="mtab-0" hidden>
           <div>
             <h3>Vrt spava, a to je najbolje vreme za rez</h3>
             <p>Zimi radimo rez i popravke. Bez lišća se najbolje vidi skelet vrta, pa se tačno zna šta treba skratiti.</p>
-            <a href="#kontakt" class="btn">Dogovori posao za ovaj mesec</a>
+            <a href="#kontakt" class="btn">Zakaži nas za ovaj mesec</a>
           </div>
           <ul class="cal-tasks">
             <li>Orezivanje listopadnog drveća i voćaka dok miruju</li>
@@ -732,7 +731,7 @@
           <div>
             <h3>Poslednji miran mesec pre nego što sve krene</h3>
             <p>Pripremamo teren i opremu. Ako menjaš nešto veće u proleće, februar je mesec za dogovor.</p>
-            <a href="#kontakt" class="btn">Dogovori posao za ovaj mesec</a>
+            <a href="#kontakt" class="btn">Zakaži nas za ovaj mesec</a>
           </div>
           <ul class="cal-tasks">
             <li>Orezivanje ruža i ukrasnog žbunja pred kretanje</li>
@@ -746,7 +745,7 @@
           <div>
             <h3>Trava kreće i sezona počinje</h3>
             <p>Kreću redovni obilasci. Travnjak dobija prvu negu, a nove sadnice odlaze u zemlju.</p>
-            <a href="#kontakt" class="btn">Dogovori posao za ovaj mesec</a>
+            <a href="#kontakt" class="btn">Zakaži nas za ovaj mesec</a>
           </div>
           <ul class="cal-tasks">
             <li>Prvo košenje i prozračivanje travnjaka</li>
@@ -760,7 +759,7 @@
           <div>
             <h3>Mesec sadnje</h3>
             <p>Sadimo i sejemo. Sad se vidi da li je plan napravljen u zimu bio dobar.</p>
-            <a href="#kontakt" class="btn">Dogovori posao za ovaj mesec</a>
+            <a href="#kontakt" class="btn">Zakaži nas za ovaj mesec</a>
           </div>
           <ul class="cal-tasks">
             <li>Dosejavanje proređenih delova travnjaka</li>
@@ -774,7 +773,7 @@
           <div>
             <h3>Sve raste brže nego što stižeš</h3>
             <p>Košenje ulazi u nedeljni ritam. Živa ograda dobija prvi oblik za tu godinu.</p>
-            <a href="#kontakt" class="btn">Dogovori posao za ovaj mesec</a>
+            <a href="#kontakt" class="btn">Zakaži nas za ovaj mesec</a>
           </div>
           <ul class="cal-tasks">
             <li>Košenje jednom nedeljno</li>
@@ -788,7 +787,7 @@
           <div>
             <h3>Počinje borba sa suvim danima</h3>
             <p>Zalivanje preuzima glavnu ulogu. Podešavamo sistem tako da voda ide kad ima smisla, a ne kad je najtoplije.</p>
-            <a href="#kontakt" class="btn">Dogovori posao za ovaj mesec</a>
+            <a href="#kontakt" class="btn">Zakaži nas za ovaj mesec</a>
           </div>
           <ul class="cal-tasks">
             <li>Zalivanje rano ujutru, ređe ali obilno</li>
@@ -802,7 +801,7 @@
           <div>
             <h3>Vrućina odlučuje kako će bašta izgledati u avgustu</h3>
             <p>Držimo baštu kroz vrućinu. Manje rezanja, više vode i senke.</p>
-            <a href="#kontakt" class="btn">Dogovori posao za ovaj mesec</a>
+            <a href="#kontakt" class="btn">Zakaži nas za ovaj mesec</a>
           </div>
           <ul class="cal-tasks">
             <li>Zalivanje je najvažniji posao u mesecu</li>
@@ -816,7 +815,7 @@
           <div>
             <h3>Vrt se odmara, ti pripremaš jesen</h3>
             <p>Održavamo i pripremamo teren. Avgust je pravo vreme da se dogovori jesenji posao.</p>
-            <a href="#kontakt" class="btn">Dogovori posao za ovaj mesec</a>
+            <a href="#kontakt" class="btn">Zakaži nas za ovaj mesec</a>
           </div>
           <ul class="cal-tasks">
             <li>Nastavak redovnog zalivanja</li>
@@ -830,7 +829,7 @@
           <div>
             <h3>Najbolji mesec u godini za nov travnjak</h3>
             <p>Radimo nove travnjake. Trava posejana u septembru dočeka proleće već ukorenjena.</p>
-            <a href="#kontakt" class="btn">Dogovori posao za ovaj mesec</a>
+            <a href="#kontakt" class="btn">Zakaži nas za ovaj mesec</a>
           </div>
           <ul class="cal-tasks">
             <li>Postavljanje tepih trave ili setva novog travnjaka</li>
@@ -844,7 +843,7 @@
           <div>
             <h3>Zemlja je još topla, vazduh već hladan</h3>
             <p>Sadimo i čistimo. Drvo posađeno u oktobru kreće u proleće kao da je oduvek tu.</p>
-            <a href="#kontakt" class="btn">Dogovori posao za ovaj mesec</a>
+            <a href="#kontakt" class="btn">Zakaži nas za ovaj mesec</a>
           </div>
           <ul class="cal-tasks">
             <li>Sadnja lukovica za prolećno cvetanje</li>
@@ -858,7 +857,7 @@
           <div>
             <h3>Bašta se sprema za zimu</h3>
             <p>Zatvaramo sezonu. Sistem za zalivanje praznimo pre prvog jačeg mraza.</p>
-            <a href="#kontakt" class="btn">Dogovori posao za ovaj mesec</a>
+            <a href="#kontakt" class="btn">Zakaži nas za ovaj mesec</a>
           </div>
           <ul class="cal-tasks">
             <li>Pražnjenje sistema za zalivanje</li>
@@ -872,7 +871,7 @@
           <div>
             <h3>Miran mesec, dobar za plan</h3>
             <p>Obilazimo i planiramo. Decembar je mesec za skicu, ne za lopatu.</p>
-            <a href="#kontakt" class="btn">Dogovori posao za ovaj mesec</a>
+            <a href="#kontakt" class="btn">Zakaži nas za ovaj mesec</a>
           </div>
           <ul class="cal-tasks">
             <li>Zaštita saksija na terasi od mraza</li>
@@ -1257,10 +1256,11 @@
   dot.className = 'now';
   dot.setAttribute('aria-hidden', 'true');
   mtabs[sada].appendChild(dot);
-  mtabs[sada].setAttribute('aria-label', mtabs[sada].firstChild.textContent + ', tekući mesec');
+  var punNaziv = mtabs[sada].getAttribute('data-full') || mtabs[sada].firstChild.textContent;
+  mtabs[sada].setAttribute('aria-label', punNaziv + ', tekući mesec');
 
   var navMonthName = document.getElementById('navMonthName');
-  if(navMonthName) navMonthName.textContent = mtabs[sada].firstChild.textContent.toLowerCase();
+  if(navMonthName) navMonthName.textContent = punNaziv.toLowerCase();
 
   function selectMonth(i, focus){
     i = (i + mtabs.length) % mtabs.length;
